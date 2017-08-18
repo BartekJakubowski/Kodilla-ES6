@@ -1,10 +1,10 @@
 //Zadanie pierwsze
-const x = "hello";
-const y = "world";
+const x = 'hello';
+const y = 'world';
 console.log(`${x} ${y}`);
 
 //Zadanie drugie
-const multiply = (a, b = 1) => {return a*b};
+const multiply = (a, b = 1) => a*b;
 console.log(multiply(5, 2));
 
 //Zadanie trzecie
