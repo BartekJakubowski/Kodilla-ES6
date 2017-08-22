@@ -55,10 +55,10 @@ class Stopwatch {
 
 function pad0(value) {
     let result = value.toString();
-	if (result.length < 2) {
-		result = '0' + result;
-	}
-	return result;
+    if (result.length < 2) {
+        result = '0' + result;
+    }
+    return result;
 }
 
 const stopwatch = new Stopwatch(document.querySelector('.stopwatch'));
