@@ -1,12 +1,12 @@
 class Stopwatch {
-	constructor(display) {
+    constructor(display) {
 		this.running = false;
 		this.display = display;
 		this.reset();
 		this.print(this.times);
 	}
 
-	reset() {
+    reset() {
 		this.times = {
 			minutes: 0,
 			seconds: 0,
@@ -14,11 +14,11 @@ class Stopwatch {
 		};
 	}
 
-	print() {
+    print() {
 		this.display.innerText = this.format(this.times);
 	}
 
-	format(times) {
+    format(times) {
         return `${pad0(times.minutes)}:${pad0(times.seconds)}:${pad0(Math.floor(times.miliseconds))}`;
 	}
     
