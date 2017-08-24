@@ -1,6 +1,7 @@
 import React from 'react';
 import uuid from 'uuid';
 import style from './App.css';
+import Title from '../components/Title.js'
 
 class App extends React.Component{
     constructor(props) {
@@ -13,7 +14,7 @@ class App extends React.Component{
     addToDo(val) {
         const todo = {
             text: val,
-            id: uuid.v4(),
+            id: uuid.v4()
         };
         const data = [...this.state.data, todo]; //push todo na koncu tablicy
         this.setState({data}); //({data}) to samo co ({data: data})
@@ -26,8 +27,9 @@ class App extends React.Component{
     
     render() {
         return (
-            <div className='style.TodoApp'>
+            <div className={style.TodoApp}>
                 Komponenty appki
+                <Title title='To Do List' number={this.state.data.length}/>
             </div>
         );
     }
