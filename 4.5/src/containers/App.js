@@ -40,7 +40,7 @@ class App extends React.Component{
             <div className={style.TodoApp}>
                 Komponenty appki
                 <Title title='To Do List' number={`Number of things to be done: ${this.state.data.length}`}/>
-                <TodoList data={this.state.data} remove={this.removeTodo()}/>
+                `<TodoList data={this.state.data} remove={(id) => this.removeTodo(id)}/>`
             </div>
         );
     }
