@@ -5,9 +5,9 @@ const TodoForm = props => {
         <form>
             <label>
                 To Do:
-                <input type='text' name='todo' />
+                <input type='text' name='todo' onChange={(event) => props.changeVal(event.target.value)} value={props.inputValue} />
             </label>
-            <input type='button' value='add todo' onClick={(val) => props.add(val)} />
+            <input type='button' value='add todo' onClick={(val) => props.add(props.inputValue)} />
         </form>
     );
 }
