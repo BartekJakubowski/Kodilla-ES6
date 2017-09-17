@@ -6,7 +6,7 @@ var path = require('path');
 var env = process.env.NODE_ENV || 'development';
 var plugins = [
     new HtmlWebpackPlugin({
-        template: 'src/index.html',
+        template: 'public/index.html',
         filename: 'index.html',
         inject: 'body',
     })
@@ -30,10 +30,12 @@ module.exports = {
         'webpack/hot/only-dev-server',
         './client/index.js'
     ],
-        output: {
-            path: path.resolve(__dirname, 'public'),
-            filename: './bundle.js'
-        },
+    
+    output: {
+        path: path.resolve(__dirname, 'public'),
+        filename: './bundle.js'
+    },
+    
     module: {
         rules: [
             {
@@ -54,9 +56,10 @@ module.exports = {
             }       
         ]
     },
-    plugins: [
+    
+    /*plugins: [
         new HtmlWebpackPlugin({
-            template: 'src/index.html',
+            template: './public/index.html',
             filename: 'index.html',
             inject: 'body'
         }),
@@ -64,5 +67,5 @@ module.exports = {
         new OptimizeJsPlugin({
             sourceMap: false
         })
-    ]
+    ]*/
 };
