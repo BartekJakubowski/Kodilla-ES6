@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Userslist.css';
+import styles from './UsersList.css';
 
 const UsersList = props => (    //komponent prezentacyjny => to co trzeba wyrenderowac
     <div className={styles.Users}>
