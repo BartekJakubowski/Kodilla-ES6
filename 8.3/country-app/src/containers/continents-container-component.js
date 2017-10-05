@@ -12,7 +12,7 @@ class ContinentsContainer extends Component {
 		this.props.dispatch(setContinent(event.target.value));
 	}
 
-	deleteCountry(id) {
+	deleteCountry = (id) => {
 		this.props.dispatch(deleteCountry(id));
 	}
 
