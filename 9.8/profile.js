@@ -40,26 +40,26 @@ module.exports = function profile() {
         success: function(form) {
             req.user.givenName = form.data.givenName;
             req.user.surname = form.data.surname;
-            var address = {
+            /*var address = {
                 streetAddress: form.data.streetAddress,
                 city: form.data.city,
                 state: form.data.state,
                 zip: form.data.zip
             };
-            req.user.address = address;
+            req.user.address = address;*/
 
             var user = new User();
-            user.givenName = req.user.givenName;
-            user.surname = req.user.surname;
-            user.address =req.user.address;
-            user.save(function(err) {
-                if (err) {
-                    console.log(err);
-                } 
-                res.json('Added to DB');
+            var address = new Address();
+            address.givenName = req.user.givenName;
+            address.surname = req.user.surname;
+            address.save(function(err) {
+            if (err) {
+                console.log(err);
+            }
+            res.json('Address added to DB');
             });
 
-            //req.user.customData.save();
+            req.user.customData.save();
             req.user.save(function(err) {
                 if (err) {
                     if (err.developerMessage){

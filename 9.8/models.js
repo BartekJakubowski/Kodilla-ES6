@@ -11,12 +11,12 @@ var shipmentSchema = new mongoose.Schema({
 		required: true
 	},
 
-	address: {
+	/*address: {
 		streetAddress: String,
 		city: String,
 		state: String,
 		zip: String
-	}
+	}*/
 });
 
 module.exports = mongoose.model('shipmentSchema', shipmentSchema);
