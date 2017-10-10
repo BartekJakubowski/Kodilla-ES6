@@ -8,8 +8,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Stopwatch = function (_React$component) {
-    _inherits(Stopwatch, _React$component);
+var Stopwatch = function (_React$Component) {
+    _inherits(Stopwatch, _React$Component);
 
     function Stopwatch() {
         _classCallCheck(this, Stopwatch);
@@ -17,26 +17,21 @@ var Stopwatch = function (_React$component) {
         var _this = _possibleConstructorReturn(this, (Stopwatch.__proto__ || Object.getPrototypeOf(Stopwatch)).call(this));
 
         _this.running = false;
-        //this.display = display;
         _this.reset();
-        //this.print(this.times);
         return _this;
     }
 
     _createClass(Stopwatch, [{
         key: 'reset',
         value: function reset() {
-            this.times = {
-                minutes: 0,
-                seconds: 0,
-                miliseconds: 0
+            this.state = {
+                times: {
+                    minutes: 0,
+                    seconds: 0,
+                    miliseconds: 0
+                }
             };
         }
-
-        //print() {
-        //    this.display.innerText = this.format(this.times);
-        //}
-
     }, {
         key: 'format',
         value: function format(times) {
@@ -51,7 +46,7 @@ var Stopwatch = function (_React$component) {
                 this.running = true;
                 this.watch = setInterval(function () {
                     return _this2.step();
-                }, 10);
+                }, 100); //Interwał odpala co 10 ms metodę step
             }
         }
     }, {
@@ -59,7 +54,6 @@ var Stopwatch = function (_React$component) {
         value: function step() {
             if (!this.running) return;
             this.calculate();
-            //this.print();
         }
     }, {
         key: 'calculate',
@@ -76,11 +70,15 @@ var Stopwatch = function (_React$component) {
                 newTimes.seconds += 1;
                 newTimes.miliseconds = 0;
             }
+
             if (newTimes.seconds >= 60) {
                 newTimes.minutes += 1;
                 newTimes.seconds = 0;
             }
-            this.setState({ times: newTimes });
+
+            this.setState(function (previousState) {
+                return { times: newTimes };
+            });
         }
     }, {
         key: 'stop',
@@ -93,6 +91,7 @@ var Stopwatch = function (_React$component) {
         value: function render() {
             var _this3 = this;
 
+            var runningStopwatch = this.running ? 'running' : '';
             return React.createElement(
                 'div',
                 { className: 'container' },
@@ -114,15 +113,20 @@ var Stopwatch = function (_React$component) {
                         'Stop'
                     )
                 ),
-                this.format(this.state.times)
+                React.createElement(
+                    'div',
+                    { className: 'stopwatch ' + runningStopwatch },
+                    this.format(this.state.times)
+                )
             );
         }
     }]);
 
     return Stopwatch;
-}(React.component);
+}(React.Component);
 
 function pad0(value) {
+    //Funkcja pad0 dodaje zero do liczb jednocyfrowych. 
     var result = value.toString();
     if (result.length < 2) {
         result = '0' + result;
