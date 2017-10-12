@@ -49,6 +49,12 @@ module.exports = function profile() {
             req.user.address = address;*/
 
             var user = new User();
+            user.save(function(err) {
+                    if (err) {
+                        console.log(err);
+                    }
+                    res.json('User added to DB');
+                });
             var address = new Address();
             address.givenName = req.user.givenName;
             address.surname = req.user.surname;
