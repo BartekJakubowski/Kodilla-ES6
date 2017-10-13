@@ -9,14 +9,7 @@ var shipmentSchema = new mongoose.Schema({
 	surname: {
 		type: String,
 		required: true
-	},
-
-	/*address: {
-		streetAddress: String,
-		city: String,
-		state: String,
-		zip: String
-	}*/
+	}
 });
 
 module.exports = mongoose.model('shipmentSchema', shipmentSchema);
